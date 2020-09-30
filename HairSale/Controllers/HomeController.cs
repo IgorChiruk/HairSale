@@ -42,5 +42,30 @@ namespace HairSale.Controllers
         {
             return View();
         }
+
+        public ActionResult QuestionAndAnswers()
+        {
+            return View();
+        }
+
+        public ActionResult HowToBuy()
+        {
+            return View();
+        }
+
+        public ActionResult WhyWe()
+        {
+            return View();
+        }
+
+        public ActionResult Refund()
+        {
+            return View();
+        }
+
+        public ActionResult SiteMap()
+        {
+            return View();
+        }
     }
 }

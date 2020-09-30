@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Контакты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="information-contact" class="container">
+    <ul class="breadcrumb ocseo-fixed">
+        <li><a href="https://papahair.by/">Главная</a></li>
+        <li>Контакты | «PapaHair»</li>
+    </ul>
+
+
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <h1>Контакты</h1>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h2 class="h4">Адрес</h2>
+                    <p>220099, Республика Беларусь, г. Минск, ул. Казинца, 11А корпус А, 8 этаж, офис А-803</p>
+                    <h2 class="h4">Телефоны</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="tel:+375333571322">+375 33 357-13-22</a></li>
+                        <li><a href="tel:+375336711322">+375 33 671-13-22</a></li>
+                    </ul>
+                    <h2 class="h4">Мессенджеры</h2>
+                    <div class="social pull-left">
+                        <ul class="list-inline">
+                            <li><a href="tg://resolve?domain=papahair" target="_blank" title="Telegram"><i class="fa fa-telegram"></i></a></li>
+                            <li><a href="viber://add?number=375336711322" target="_blank" title="Viber"><i class="fa fa-viber"></i></a></li>
+                            <li><a href="//api.whatsapp.com/send?phone=375336711322" target="_blank" title="WhatsApp"><i class="fa fa-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h2 class="h4">E-mail</h2>
+                    <p><i class="fa fa-envelope"></i> Пишите: <a href="mailto:info@papahair.by">info@papahair.by</a></p>
+                    <h2 class="h4">Время работы</h2>
+                    <p>Пн-Вс с 10:00 до 20:00</p>
+                    <h2 class="h4">Реквизиты</h2>
+                    <p>Индивидуальный предприниматель Жуковский Роман Юрьевич<br> УНП 692141529<br> р/c BY10 ALFA 3013 2498 8800 1027 0000<br> ЗАО "АЛЬФА-БАНК", юридический адрес: yл. Сурганова, 43-47, 220013 Минск, Республика Беларусь, платежные реквизиты: СВИФТ - ALFABY2X, УНП 101541947, ОКПО 37526626</p>
+                </div>
+                <div class="col-sm-5">
+                    <form action="https://papahair.by/kontakty" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <fieldset>
+                            <h2 class="h4 text-center">Обратная связь</h2>
+                            <div class="form-group required">
+                                <label class="col-sm-4 control-label" for="input-name">Имя</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="name" value="" id="input-name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-4 control-label" for="input-email">E-mail</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="email" value="" id="input-email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-4 control-label" for="input-enquiry">Сообщение</label>
+                                <div class="col-sm-8">
+                                    <textarea name="enquiry" rows="7" id="input-enquiry" class="form-control"></textarea>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="buttons">
+                            <div class="pull-right">
+                                Я прочитал <a href="https://papahair.by/index.php?route=information/information/agree&amp;information_id=3" class="agree"><b>Как купить</b></a> и согласен с <br> условиями безопасности и обработки персональных данных
+                                <input type="checkbox" name="agree" value="1">
+                                &nbsp;
+                                <input type="submit" value="Отправить сообщение" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>           
+        </div>
+    </div>
+</div>
+

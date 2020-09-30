@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "QuestionAndAnswers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="information-faq" class="container">
+    <ul class="breadcrumb ocseo-fixed">
+        <li><a href="https://papahair.by/">Главная</a></li>
+        <li>Вопрос-ответ</li>
+    </ul>
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <div class="container">
+                <h1 class="margin">Вопрос-ответ</h1>
+                <div class="col-md-8">
+                    <div class="faq">
+                        <ul>
+                            <li>
+                                <input type="checkbox" checked="">
+                                <i></i>
+                                <div class="faq-question">
+                                    <h2>Какой длины у Вас бывают волосы?</h2>
+                                </div>
+                                <div class="faq-answer">
+                                    <div>
+                                        <p>Мы продаем волосы длиной <a href="/volosy-40-sm/">40 см</a>, <a href="/volosy-50-sm/">50 см</a>, <a href="/volosy-60-sm/">60 см</a>, <a href="/volosy-70-sm/">70 см</a> и <a href="/volosy-80-sm/">80 см</a>.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="">
+                                <i></i>
+                                <div class="faq-question">
+                                    <h2>У Вас есть волосы в трессе?</h2>
+                                </div>
+                                <div class="faq-answer">
+                                    <div>
+                                        <p>Да, у нас есть <a href="/volosy-na-tresse/">волосы в трессе</a>. Мы продаем как машинный тресс, так и сами изготавливаем ручные трессы по индивиуальным размерам.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="">
+                                <i></i>
+                                <div class="faq-question">
+                                    <h2>У Вас только южно-русские волосы?</h2>
+                                </div>
+                                <div class="faq-answer">
+                                    <div>
+                                        <p>Нет, также мы у нас имеются <a href="/slavyanskie-volosy/">славянские волосы</a> с фотографией донора.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="">
+                                <i></i>
+                                <div class="faq-question">
+                                    <h2>Вы продаете только волосы?</h2>
+                                </div>
+                                <div class="faq-answer">
+                                    <div>
+                                        <p>Нет, у нас можно приобрести инструмент для наращивания волос.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="">
+                                <i></i>
+                                <div class="faq-question">
+                                    <h2>Есть ли у Вас доставка и сколько времени она занимает?</h2>
+                                </div>
+                                <div class="faq-answer">
+                                    <div>
+                                        <p>Да, мы осуществляем <a href="/oplata-i-dostavka">доставку по Минску и всей Беларуси</a>.</p>
+                                        <ul>
+                                            <li>По Минску - в день покупки.</li>
+                                            <li>В любой другой город - 1 рабочий день (кроме выходных).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="">
+                                <i></i>
+                                <div class="faq-question">
+                                    <h2>Можно ли приобрести волосы под заказ?</h2>
+                                </div>
+                                <div class="faq-answer">
+                                    <div>
+                                        <p>Да, реализация волос под заказ занимает 3-4 недели.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 faq-form">
+                    <form id="formFaq" method="POST" novalidate="true">
+                        <fieldset>
+                            <h2 class="h5 text-center">Остались вопросы?</h2>
+                            <div class="form-group required">
+                                <label class="col-sm-12 control-label" for="name_faq">Ваше имя</label>
+                                <div class="col-sm-12 padding-0">
+                                    <input type="text" name="name_faq" value="" id="name_faq" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-12 control-label" for="email_faq">E-Mail</label>
+                                <div class="col-sm-12 padding-0">
+                                    <input type="text" name="email_faq" value="" id="email_faq" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-12 control-label" for="message_faq">Ваш вопрос</label>
+                                <div class="col-sm-12 padding-0">
+                                    <textarea name="message_faq" rows="10" id="message_faq" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="buttons text-center">
+                            <div id="msgSubmit" class="h6 text-center hidden"></div>
+                            <input class="btn btn-primary" type="submit" value="Задать вопрос" style="pointer-events: all; cursor: pointer;">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+

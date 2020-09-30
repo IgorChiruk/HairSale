@@ -97,6 +97,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\BuyingHair\do-i-posle-sreza-volos.jpg" />
+    <Content Include="Content\Images\BuyingHair\foto-klienta-do-sreza-volos.jpg" />
+    <Content Include="Content\Images\BuyingHair\foto-klienta-posle-sreza-volos.jpg" />
+    <Content Include="Content\Images\BuyingHair\foto-klienta.jpg" />
+    <Content Include="Content\Images\BuyingHair\foto-s-klientom.jpg" />
+    <Content Include="Content\Images\BuyingHair\roman-i-anna.jpg" />
+    <Content Include="Content\Images\BuyingHair\skupka-volos-v-minske.jpg" />
     <Content Include="Content\Images\footer-background.jpg" />
     <Content Include="Content\Images\logo-footer.png" />
     <Content Include="Content\Images\logo.png" />
@@ -251,6 +258,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
+    <Content Include="Views\Home\Catalog.cshtml" />
+    <Content Include="Views\Home\BuyingHair.cshtml" />
+    <Content Include="Views\Home\PaymentAndDelivery.cshtml" />
+    <Content Include="Views\Home\Reviews.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\Home\QuestionAndAnswers.cshtml" />
+    <Content Include="Views\Home\HowToBuy.cshtml" />
+    <Content Include="Views\Home\WhyWe.cshtml" />
+    <Content Include="Views\Home\Refund.cshtml" />
+    <Content Include="Views\Home\SiteMap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
