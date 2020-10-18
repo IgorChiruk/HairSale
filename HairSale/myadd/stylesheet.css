@@ -317,7 +317,7 @@ div.required .control-label:before {
 }
 
 .our-shop h2 {
-	margin-bottom: 30px;;
+	margin-bottom: 30px;
 }
 /* tables */
 .blog-table {width: 100%;margin: 25px auto;}
@@ -951,11 +951,11 @@ div.required .control-label:before {
 }
 /* footer */
 footer {
-    margin-top: 30px;
-    padding-top: 100px;
-    background: #dddddd url(/image/catalog/footer-background.jpg) no-repeat;
-    background-position: right bottom;
-    color: #444;
+	margin-top: 30px;
+	padding-top: 100px;
+	background: #dddddd url('../Content/Images/footer-background.jpg') no-repeat;
+	background-position: right bottom;
+	color: #444;
 	font-size: 16px;
 }
 

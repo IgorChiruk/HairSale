@@ -97,6 +97,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\bbb\logo1.jpg" />
+    <Content Include="Content\Images\bbb\logo2.jpg" />
+    <Content Include="Content\Images\bbb\logo3.jpg" />
+    <Content Include="Content\Images\bbb\logo4.jpg" />
     <Content Include="Content\Images\BuyingHair\do-i-posle-sreza-volos.jpg" />
     <Content Include="Content\Images\BuyingHair\foto-klienta-do-sreza-volos.jpg" />
     <Content Include="Content\Images\BuyingHair\foto-klienta-posle-sreza-volos.jpg" />
