@@ -1,0 +1,20 @@
+﻿@using HairSale.Models.Orders
+@model OrderViewModel
+
+
+@{
+    ViewBag.Title = "Оформление заказа";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using (Html.BeginForm("Ordering", "Home"))
+{
+    <p>@Html.LabelFor(e => e.UserEmail)</p>
+    <p>@Html.EditorFor(e => e.UserEmail)</p>
+    <p>@Html.LabelFor(p => p.UserPhone)</p>
+    <p>@Html.EditorFor(p => p.UserPhone)</p>
+    <p><input type="submit" value="Оформить" /></p>
+
+
+
+}

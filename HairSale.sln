@@ -5,7 +5,10 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairSale", "HairSale\HairSale.csproj", "{A77FB9B3-0B0E-4105-8D2C-93B72699A451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairSale.Tests", "HairSale.Tests\HairSale.Tests.csproj", "{ABD34FE2-F3FE-4B4E-94FC-62F5595F4C0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{A7196F23-8C6F-4521-A8F5-1C6A2AF21711}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A77FB9B3-0B0E-4105-8D2C-93B72699A451} = {A77FB9B3-0B0E-4105-8D2C-93B72699A451}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +20,10 @@ Global
 		{A77FB9B3-0B0E-4105-8D2C-93B72699A451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A77FB9B3-0B0E-4105-8D2C-93B72699A451}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A77FB9B3-0B0E-4105-8D2C-93B72699A451}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABD34FE2-F3FE-4B4E-94FC-62F5595F4C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABD34FE2-F3FE-4B4E-94FC-62F5595F4C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABD34FE2-F3FE-4B4E-94FC-62F5595F4C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABD34FE2-F3FE-4B4E-94FC-62F5595F4C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7196F23-8C6F-4521-A8F5-1C6A2AF21711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7196F23-8C6F-4521-A8F5-1C6A2AF21711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7196F23-8C6F-4521-A8F5-1C6A2AF21711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7196F23-8C6F-4521-A8F5-1C6A2AF21711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

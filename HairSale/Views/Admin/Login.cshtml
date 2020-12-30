@@ -1,0 +1,49 @@
+﻿@model HairSale.Models.UserAndRoles.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <script src="~/myadd/jquery-2.1.1.min.js"></script>
+    <script src="~/myadd/bootstrap.min.js"></script>
+    <link href="~/myadd/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        @using (@Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+            <div class="container">
+                <p>
+                    @Html.LabelFor(x => Model.Login)
+                </p>
+                <p>
+                    @Html.EditorFor(x => Model.Login)
+                </p>
+            </div>
+
+            <div class="container">
+                <p>
+                    @Html.LabelFor(x => Model.Password)
+                </p>
+                <p>
+                    @Html.EditorFor(x => Model.Password)
+                </p>
+            </div>
+
+            <p class="container">
+                <input type="submit" value="Войти" class="btn btn-success" />
+            </p>
+        }
+    </div>
+</body>
+</html>

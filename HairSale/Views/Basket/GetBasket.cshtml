@@ -1,0 +1,32 @@
+﻿@using HairSale.Models.Basket
+@model HairSale.Models.Basket.UserBasket
+
+@foreach(BasketItem item in Model.BasketItems)
+{
+<li>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td class="text-center"> <a href=""><img src="data:image/jpg;base64,@Convert.ToBase64String(item.HairItem.HairImage.Data)" alt="@item.HairItem.Name" title="@item.HairItem.Name" class="img-thumbnail"></a></td>
+                <td class="text-left"><a href="">@item.HairItem.Name</a> </td>
+                <td class="text-right">x @item.Quality</td>
+                <td class="text-right">@(item.HairItem.Price*item.Quality)</td>
+                <td class="text-center"><button type="button" onclick="RemoveItemFromBasket('@Model.Id','@item.Id')" title="Удалить" class="btn-primary btn-xs"><i class="fa fa-times"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</li>
+}
+<li>
+    <div>
+        <table class="table table-bordered">
+            <tbody>              
+                <tr>
+                    <td class="text-right"><strong>Итого</strong></td>
+                    <td class="text-right" id="BasketTotal">0</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-right"><a href="~/Home/Ordering"><strong><i class="fa fa-share"></i> Оформить заказ</strong></a></p>
+    </div>
+</li>

@@ -1,0 +1,22 @@
+﻿@using HairSale.Models.HairItems;
+@model IEnumerable<HairItem>
+
+
+@{
+    ViewBag.Title = "CatalogGood";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+<div class="container">
+    @foreach(HairItem item in Model)
+    {
+    <div class="container border border-light">
+        <p><img alt="@item.Id" src="data:image/jpg;base64,@Convert.ToBase64String(item.HairImage.Data)" /></p>
+        <p>@item.Name</p>
+        <p>@item.Price</p>
+        <p><button class="btn btn-default" onclick="AddItemToBasket(@item.Id,1)"> В корзину</button></p>
+    </div>
+    }
+
+</div>
+
+
