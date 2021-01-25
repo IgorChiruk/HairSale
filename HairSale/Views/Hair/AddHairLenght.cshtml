@@ -1,0 +1,9 @@
+﻿@model HairSale.Models.HairItems.HairLength
+<div class="modal-content">
+    <div class="container p-5 text-center">
+        <h4>Введите новую длину в см.</h4>
+        @Html.EditorFor(x => Model.Length)
+        <button id="AddHairLengthButton" class="btn btn-success m-2" type="button">Добавить</button>
+    </div>
+   
+</div>

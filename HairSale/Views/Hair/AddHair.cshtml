@@ -1,0 +1,31 @@
+﻿@model HairSale.Models.HairItems.HairViewModel
+
+<div class="container-fluid mt-5" id="AddHairMenu">
+    <div>
+        <p>
+            @Html.LabelFor(x => Model.Name)
+        </p>
+        <p>
+            @Html.EditorFor(x => Model.Name)
+        </p>
+    </div>
+    <div>
+        <p>
+            @Html.LabelFor(x => Model.Price)
+        </p>
+        <p>
+            @Html.EditorFor(x => Model.Price)
+        </p>
+    </div>
+    <div>
+        <p>
+            @Html.EnumDropDownListFor(
+     x => x.HairType,
+     "Выберите тип",
+     new { @class = "form-control" })
+        </p>
+        
+    </div>
+    <p><label for="AddHairImage">Название : </label><input type="file" class="mr-5 ml-5" id="AddHairImage"></p>
+    <p><button type="button" id="AddNewHairButton" class="btn btn-success">AddNew</button></p>
+</div>

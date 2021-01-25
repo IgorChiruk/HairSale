@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.IO;
 using HairSale.Models;
 
+
 namespace HairSale.Controllers
 {
     [Authorize(Roles = "admin")]
@@ -18,8 +19,26 @@ namespace HairSale.Controllers
         {
             using (AppContext context = AppContext.Create())
             {
-                var hairs = context.HairItems.Include(x => x.HairImage).ToList();
+                var hairs = context.HairItems.Include(x => x.HairImage).ToList();             
                 return PartialView(hairs);
+            }
+        }
+
+        public ActionResult GetHairLength()
+        {
+            using (AppContext context = AppContext.Create())
+            {
+                var length = context.HairLengths.OrderBy(x => x.Length).ToList();
+                return PartialView(length);
+            }
+        }
+
+        public ActionResult GetHairColor()
+        {
+            using (AppContext context = AppContext.Create())
+            {
+                var colors = context.HairColors.ToList();
+                return PartialView(colors);
             }
         }
 
@@ -39,30 +58,105 @@ namespace HairSale.Controllers
             
         }
 
+        [HttpGet]
+        public ActionResult AddHair()
+        {
+            return PartialView();
+        }
+
         [HttpPost]
-        public JsonResult AddHair(string name, string price, HttpPostedFileBase postedFile)
+        public JsonResult AddHair(HairViewModel model)
         {
             using (AppContext context = AppContext.Create())
             {
-                if (name != null && price != null && postedFile != null)
-                {
+                if (!ModelState.IsValid)
+                {              
+                    return Json(false);
+                }             
                     byte[] bytes;
 
-                    using (BinaryReader br = new BinaryReader(postedFile.InputStream))
+                    using (BinaryReader br = new BinaryReader(model.PostedImage.InputStream))
                     {
-                        bytes = br.ReadBytes(postedFile.ContentLength);
+                        bytes = br.ReadBytes(model.PostedImage.ContentLength);
                     }
 
-                    ImageEntity image = new ImageEntity() { Name = postedFile.FileName, ContentType = postedFile.ContentType, Data = bytes };
-                    HairItem hair = new HairItem() { Name = name, Price = System.Convert.ToInt32(price), HairImage = image };
+                    ImageEntity image = new ImageEntity() { Name = model.PostedImage.FileName, ContentType = model.PostedImage.ContentType, Data = bytes };
+                    HairItem hair = new HairItem() { Name =model.Name, Price = model.Price, HairImage = image };
                     context.Images.Add(image);
                     context.HairItems.Add(hair);
                     context.SaveChanges();
+                    return Json(true);              
+            }      
+        }
 
+        [HttpGet]
+        public ActionResult AddHairLenght()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public JsonResult AddHairLenght(HairLength model)
+        {
+            using (AppContext context = AppContext.Create())
+            {
+                context.HairLengths.Add(model);
+                context.SaveChanges();
+                return Json(true);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult AddHairColor()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public JsonResult AddHairColor(HairColor model)
+        {
+            using (AppContext context = AppContext.Create())
+            {
+                context.HairColors.Add(model);
+                context.SaveChanges();
+                return Json(true);            
+            }
+        }
+
+        public JsonResult DeleteHairLength(int id)
+        {
+            using (AppContext context = AppContext.Create())
+            {
+                var item = context.HairLengths.Find(id);
+                if (item != null)
+                {
+                    context.Entry(item).State = EntityState.Deleted;
+                    context.SaveChanges();
                     return Json(true);
                 }
                 return Json(false);
-            }      
+            }
         }
+
+        public JsonResult DeleteHairColor(int id)
+        {
+            using (AppContext context = AppContext.Create())
+            {
+                var item = context.HairColors.Find(id);
+                if (item != null)
+                {
+                    context.Entry(item).State = EntityState.Deleted;
+                    context.SaveChanges();
+                    return Json(true);
+                }
+                return Json(false);
+            }
+
+        }
+
+
+        //<div class="modal-content">
+        //        ...
+        //    </div>
     }
 }

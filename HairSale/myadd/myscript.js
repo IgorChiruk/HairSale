@@ -5,15 +5,80 @@
         ShowHairs();
     });
 
+    $("body").on("click", "#AdminPageHairLengthButton", function () {
+        ClearTable();
+        ShowHairLength();
+    });
+
+    $("body").on("click", "#AdminPageHairColorButton", function () {
+        ClearTable();
+        ShowHairColor();
+    });
+
     $("body").on("click", "#AdminPageUserButton", function () {
         ClearTable();
         ShowUsersCount();
     });
 
     $("body").on("click", "#AdminPageOrderButton", function () {
-        ClearTable();      
+        ClearTable();
+        ShowOrders();
+    });
+    ///////////////////////////////////
+    $("body").on("click", "#AddHairLengthButton", function () {
+
+        var length = parseInt($("#Length").val());
+        if (Number.isInteger(length)) {
+            var formData = new FormData();
+            formData.append('Length', length);
+            $.ajax({
+                url: "/Hair/AddHairLenght",
+                method: 'Post',
+                data: formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    if (data == true) {
+                        $('#modalwindow').modal('hide');
+                        ClearModalWindow();
+                        ClearTable();
+                        ShowHairLength();
+                    } else {
+                        alert("Что-то пошло не так");
+                    }
+                }
+            });
+        }
     });
 
+    $("body").on("click", "#AddHairColorButton", function () {
+
+        var color = $("#Color").val();
+        var formData = new FormData();
+        formData.append('Color', color);
+        $.ajax({
+            url: "/Hair/AddHairColor",
+            method: 'Post',
+            data: formData,
+            cache: false,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data == true) {
+                    $('#modalwindow').modal('hide');
+                    ClearModalWindow();
+                    ClearTable();
+                    ShowHairColor();
+                } else {
+                    alert("Что-то пошло не так");
+                }
+            }
+        });
+    });
+    //////////////////////////////////////
     $("body").on("click", "#DeleteUsersButton", function () {
         var days = parseInt($("#DeleteUsersInput").val());
         $("#DeleteUsersInput").val("");
@@ -34,28 +99,45 @@
 
     $("body").on("click", "#AddHairsButton", function () {
         ClearTable();
-        var table = $("#AdminPageTable");
-        table.append('<div class="container-fluid mt-5" id="EditUserMenu"></div >');
-        var EditUserMenu = $("#EditUserMenu");
-        EditUserMenu.append('<p><label for= "AddHairName" >Название : </label><input type="text" class= "mr-5 ml-5" id = "AddHairName" size = "5" ></p>');
-        EditUserMenu.append('<p><label for= "AddHairPrice" >Название : </label><input type="text" class= "mr-5 ml-5" id = "AddHairPrice" size = "5" ></p>');
-        EditUserMenu.append('<p><label for= "AddHairImage" >Название : </label><input type="file" class= "mr-5 ml-5" id = "AddHairImage"></p>');
-        EditUserMenu.append('<p><button type="button" id="AddNewHairButton" class="btn btn-success">AddNew</button</p>');
+        $.get("/Hair/AddHair", function (data) {
+            var table = $("#AdminPageTable");
+            table.append(data);
+        });
+    });
+
+    $("body").on("click", "#AddLengthButton", function () {
+        $.get("/Hair/AddHairLenght", function (data) {
+            ClearModalWindow();
+            var modal = $("#modal-content");
+            modal.append(data);
+            $('#modalwindow').modal('show')
+        });
+    });
+
+    $("body").on("click", "#AddColorButton", function () {
+        $.get("/Hair/AddHairColor", function (data) {
+            ClearModalWindow();
+            var modal = $("#modal-content");
+            modal.append(data);
+            $('#modalwindow').modal('show')
+        });
     });
 
     $("body").on("click", "#AddNewHairButton", function () {
         var imageInput = $("#AddHairImage").get(0);
         var files = imageInput.files;
-        var name = $("#AddHairName").val();
-        var price = $("#AddHairPrice").val();
+        var name = $("#Name").val();
+        var price = $("#Price").val();
+        var type = $("#HairType").val();
 
         var formData = new FormData();
-        formData.append('name', name);
-        formData.append('price', price);
-        formData.append('postedFile', files[0]);
+        formData.append('Name', name);
+        formData.append('Price', price);
+        formData.append('PostedImage', files[0]);
+        formData.append('HairType', type);
 
         $.ajax({
-            url: "/Hair/AddHair",   
+            url: "/Hair/AddHair",
             method: 'Post',
             data: formData,
             cache: false,
@@ -68,16 +150,26 @@
                     ClearTable();
                     ShowHairs();
                 } else {
-                    alert("Ошибка");
+                    alert("Заполните все поля");
                 }
             }
         });
     });
 });
 
+// Clear tables
 function ClearTable() {
     $("#AdminPageTable > div").remove();
 }
+
+function ClearModalWindow() {
+    $("#modal-content > div").remove();
+}
+
+function ClearOrdersTable() {
+    $("#OrderTable > tbody").remove();
+}
+
 
 function ShowUsers() {
     $.get("/api/User", function (data) {
@@ -92,7 +184,7 @@ function ShowUsers() {
 
 function ShowUsersCount() {
     $.get("/api/User", function (data) {
-        var table = $("#AdminPageTable");       
+        var table = $("#AdminPageTable");
         table.append('<div class="container-fluid">Колличество пользователей в базе: ' + data + '</div>');
         table.append('<div class="container-fluid"><label for="DeleteUsersInput">Удалить всех кто не заходил N дней</label><input type="text" class="mr-5 ml-5" id="DeleteUsersInput" size="5"><button type="button" id="DeleteUsersButton" class="btn btn-danger">Delete</button></div>');
     });
@@ -102,13 +194,35 @@ function ShowHairs() {
     $.get("/Hair/GetHairs", function (data) {
         var table = $("#AdminPageTable");
         table.append(data);
-    });   
+    });
+}
+
+function ShowHairLength() {
+    $.get("/Hair/GetHairLength", function (data) {
+        var table = $("#AdminPageTable");
+        table.append(data);
+    });
+}
+
+function ShowHairColor() {
+    $.get("/Hair/GetHairColor", function (data) {
+        var table = $("#AdminPageTable");
+        table.append(data);
+    });
+}
+
+function ShowOrders() {
+    $.get("/Order/GetOrderViewMenu", function (data) {
+        var table = $("#AdminPageTable");
+        table.append(data);
+        GetWaitingOrders();
+    });
 }
 
 function DeleteHair(id) {
     $.ajax({
-        url: "/Hair/DeleteHair/"+id,
-        type: 'delete',       
+        url: "/Hair/DeleteHair/" + id,
+        type: 'delete',
         cache: false,
         dataType: 'json',
         processData: false,
@@ -116,11 +230,94 @@ function DeleteHair(id) {
         success: function (data) {
             ClearTable();
             ShowHairs();
-            if (data==true) {
+            if (data == true) {
                 alert("Удалено");
             } else {
                 alert("Ошибка");
             }
         }
-    });  
+    });
+}
+
+function ViewOrder(orderId) {
+    $.get("/Order/GetOrder/" + orderId, function (data) {
+        ClearTable();
+        var table = $("#AdminPageTable");
+        table.append(data);
+    });
+}
+
+function GetAllOrders() {
+    //alert("all");
+    ClearOrdersTable();
+    $.get("/Order/GetAllOrders/", function (data) {
+
+        var table = $("#OrderTable");
+        table.append(data);
+    });
+}
+
+function GetCompleteOrders() {
+    //alert("comp");
+    ClearOrdersTable();
+    $.get("/Order/GetCompleteOrders/", function (data) {
+
+        var table = $("#OrderTable");
+        table.append(data);
+    });
+}
+
+function GetWaitingOrders() {
+    //alert("wait");
+    ClearOrdersTable();
+    $.get("/Order/GetWaitingOrders/", function (data) {
+
+        var table = $("#OrderTable");
+        table.append(data);
+    });
+}
+
+function CompleteOrder(orderId, event) {
+    alert("Complete+" + orderId);
+    event.stopPropagation();
+}
+
+function DeleteHairLength(Id) {
+    $.ajax({
+        url: "/Hair/DeleteHairLength/" + Id,
+        type: 'delete',
+        cache: false,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            ClearTable();
+            ShowHairLength();
+            if (data == true) {
+                alert("Удалено");
+            } else {
+                alert("Ошибка");
+            }
+        }
+    });
+}
+
+function DeleteHairColor(Id) {
+    $.ajax({
+        url: "/Hair/DeleteHairColor/" + Id,
+        type: 'delete',
+        cache: false,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            ClearTable();
+            ShowHairColor();
+            if (data == true) {
+                alert("Удалено");
+            } else {
+                alert("Ошибка");
+            }
+        }
+    });
 }

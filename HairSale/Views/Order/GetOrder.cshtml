@@ -1,0 +1,21 @@
+﻿@model HairSale.Models.Orders.Order
+@using HairSale.Models.Orders
+
+<div class="container">
+    <p>@Model.UserEmail</p>
+    <p>@Model.UserPhone</p>
+    <p>@Model.OrderStatus</p>
+    <p>@Model.Date</p>
+    @foreach (OrderItem item in Model.OrderItems)
+    {
+        <div class="container m-2 border">
+            <p>@item.Quality</p>
+            <p>@item.HairItem.Id</p>
+            <p>@item.HairItem.Name</p>
+            <p>@item.HairItem.Price</p>
+            <img src="data:text/plain;base64,@Convert.ToBase64String(item.HairItem.HairImage.Data)" />
+        </div>
+
+
+    }
+</div>

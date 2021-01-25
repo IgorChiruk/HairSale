@@ -39,5 +39,8 @@ namespace HairSale.Models
         public DbSet<ImageEntity> Images { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<HairLength> HairLengths { get; set; }
+        public DbSet<HairColor> HairColors { get; set; }
+
     }
 }

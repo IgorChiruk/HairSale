@@ -9,23 +9,30 @@ using HairSale.Models.Orders;
 
 namespace HairSale.Models.HairItems
 {
-    [DataContract]
+    public enum HairType
+    {
+        Slavian = 1,
+        Russian = 2
+    }
+
+    //[DataContract]
     public class HairItem
     {
+
         public HairItem(){}
 
-        [DataMember]
+        //[DataMember]
         public int Id { get; set; }
 
-        [DataMember]
+        //[DataMember]
         public string Name { get; set; }
 
-        [DataMember]
+        //[DataMember]
         public int Price { get; set; }
 
-        [DataMember]
+        //[DataMember]
         public ImageEntity HairImage { get; set; }
-
+        public HairType HairType { get; set; }
         public ICollection<BasketItem> BasketItems { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
     }

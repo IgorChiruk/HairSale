@@ -288,6 +288,7 @@
     <Content Include="Content\Images\Hair\yuzhno-russkie-volosy.jpg" />
     <Content Include="Content\Images\temp\45a79baa9e0e2ce2d96921a38bad65bf.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\StyleSheetForAdminPage.css" />
     <Content Include="Global.asax" />
     <Content Include="myadd\bootstrap.min.css" />
     <Content Include="myadd\bootstrap.min.js" />
@@ -430,6 +431,7 @@
     <Compile Include="Controllers\HairController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -440,8 +442,11 @@
     <Compile Include="Models\DBInitializer\ContextInitializer.cs" />
     <Compile Include="Models\HairImages\ImageEntity.cs" />
     <Compile Include="Models\HairImages\ImageManager.cs" />
+    <Compile Include="Models\HairItems\HairColor.cs" />
     <Compile Include="Models\HairItems\HairItem.cs" />
     <Compile Include="Models\HairItems\HairItemManager.cs" />
+    <Compile Include="Models\HairItems\HairLength.cs" />
+    <Compile Include="Models\HairItems\HairViewModel.cs" />
     <Compile Include="Models\Orders\Order.cs" />
     <Compile Include="Models\Orders\OrderItem.cs" />
     <Compile Include="Models\Orders\OrderViewModel.cs" />
@@ -476,6 +481,14 @@
     <Content Include="Views\Basket\GetBasket.cshtml" />
     <Content Include="Views\Basket\GetEmptyBasket.cshtml" />
     <Content Include="Views\Home\Ordering.cshtml" />
+    <Content Include="Views\Hair\AddHair.cshtml" />
+    <Content Include="Views\Order\GetOrders.cshtml" />
+    <Content Include="Views\Order\GetOrder.cshtml" />
+    <Content Include="Views\Order\OrderViewMenu.cshtml" />
+    <Content Include="Views\Hair\AddHairLenght.cshtml" />
+    <Content Include="Views\Hair\GetHairLength.cshtml" />
+    <Content Include="Views\Hair\GetHairColor.cshtml" />
+    <Content Include="Views\Hair\AddHairColor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

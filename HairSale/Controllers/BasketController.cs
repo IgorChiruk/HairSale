@@ -117,5 +117,11 @@ namespace HairSale.Controllers
                 return Json(false);
             }
         }
+
+        public void ClearBasket()
+        {
+
+        }
+
     }
 }

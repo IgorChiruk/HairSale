@@ -3,25 +3,25 @@
 
 @if (Model.Count() <= 0)
 {
-    <div class="container-fluid">
+    <div class="container">
         <h3>Пока нет добавленых видов волос</h3>
-        <button type="button" id="AddHairsButton" class="btn btn-success">Добавить</button>
+        <button type="button" id="AddHairsButton" class="btn btn-success">Добавить новый вид волос</button>
     </div>
 }
 else
 {
-    <div class="container">
-        <button type="button" id="AddHairsButton" class="btn btn-success">Добавить</button>
+    <div class=" m-1">
+        <button type="button" id="AddHairsButton" class="btn btn-success">Добавить новый вид волос</button>
     </div>
-    <div class="container" id="HairsTableDiv">
+    <div class="row" id="HairsTableDiv">
         @foreach (HairItem item in Model)
         {
-            <p>
-                Name: @item.Name Price : @item.Price
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <img id="@item.Id" src="data:text/plain;base64,@Convert.ToBase64String(item.HairImage.Data)" />
+                <p>Name: @item.Name</p>
+                <p>Price : @item.Price</p>
                 <button class="btn btn-success" onclick="DeleteHair(@item.Id)">Delete</button>
-            </p>
+            </div>
         }
     </div>
-
 }

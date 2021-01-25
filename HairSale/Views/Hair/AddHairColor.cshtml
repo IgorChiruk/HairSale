@@ -1,0 +1,10 @@
+﻿@model HairSale.Models.HairItems.HairColor
+
+<div class="modal-content">
+    <div class="container p-5 text-center">
+        <h4>Введите новый код цвета</h4>
+        @Html.EditorFor(x => Model.Color)
+        <button id="AddHairColorButton" class="btn btn-success m-2" type="button">Добавить</button>
+    </div>
+
+</div>
