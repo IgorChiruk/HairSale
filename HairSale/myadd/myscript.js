@@ -129,21 +129,45 @@
         var name = $("#Name").val();
         var price = $("#Price").val();
         var type = $("#HairType").val();
+        var HairLenght = [1, 1];
 
-        var formData = new FormData();
-        formData.append('Name', name);
-        formData.append('Price', price);
-        formData.append('PostedImage', files[0]);
-        formData.append('HairType', type);
+        //var hair = {
+        //    Name: name,
+        //    Price: price,
+        //    HairType: type,
+        //    PostedImage: files[0],
+        //    HairLenghts: [HairLenght, HairLenght, HairLenght]
+        //};    
+
+        var model = new Object();
+        model.Name = name;
+        model.Price = price;
+        model.PostedImage = files[0];
+        model.HairLengths = new Array();
+        model.HairLengths[0] = new Object({  Id: 1, Length: 1 });
+        model.HairLengths[1] = new Object({ Id: 2, Length: 2 });
+        var dfsd = JSON.stringify(model);
+
+        //var formData = new FormData();
+        //formData.append('model', hair);
+
+        //$("input:checkbox[name=HairColors]:checked").each(function () {
+        //    alert("Id: " + $(this).attr("id") + " Value: " + $(this).val());
+        //});
+
+        //var HairColors = { 'Id': 1, 'Length': 1, }
+        //formData.append('Name', name);
+        //formData.append('Price', price);
+        //formData.append('PostedImage', files[0]);
+        //formData.append('HairType', type);
+        //formData.append('HairColors',HairColors);
 
         $.ajax({
             url: "/Hair/AddHair",
-            method: 'Post',
-            data: formData,
-            cache: false,
-            dataType: 'json',
+            type: "Post",        
+            contentType: 'application/json',          
+            data: JSON.stringify(model),
             processData: false,
-            contentType: false,
             success: function (data) {
                 if (data == true) {
                     alert("Успешно добавлено");
@@ -154,6 +178,25 @@
                 }
             }
         });
+
+        //$.ajax({
+        //    url: "/Hair/AddHair",
+        //    method: 'Post',
+        //    data: JSON.stringify({ model: hair }),
+        //    cache: false,
+        //    dataType: 'json',
+        //    processData: false,
+        //    contentType: false,
+        //    success: function (data) {
+        //        if (data == true) {
+        //            alert("Успешно добавлено");
+        //            ClearTable();
+        //            ShowHairs();
+        //        } else {
+        //            alert("Заполните все поля");
+        //        }
+        //    }
+        //});
     });
 });
 

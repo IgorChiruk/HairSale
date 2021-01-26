@@ -61,31 +61,38 @@ namespace HairSale.Controllers
         [HttpGet]
         public ActionResult AddHair()
         {
-            return PartialView();
+            using (AppContext context = AppContext.Create())
+            {
+                var colors = context.HairColors.AsNoTracking().ToList();
+                var lengths = context.HairLengths.AsNoTracking().ToList();
+                HairViewModel model = new HairViewModel() { HairColors=colors, HairLengths=lengths};
+                return PartialView(model);
+            }
+                
         }
 
         [HttpPost]
-        public JsonResult AddHair(HairViewModel model)
+        public JsonResult AddHair([System.Web.Http.FromBody] HairViewModel model)
         {
             using (AppContext context = AppContext.Create())
             {
-                if (!ModelState.IsValid)
-                {              
-                    return Json(false);
-                }             
-                    byte[] bytes;
+                //if (!ModelState.IsValid)
+                //{              
+                return Json(false);
+                //}             
+                //    byte[] bytes;
 
-                    using (BinaryReader br = new BinaryReader(model.PostedImage.InputStream))
-                    {
-                        bytes = br.ReadBytes(model.PostedImage.ContentLength);
-                    }
+                //    using (BinaryReader br = new BinaryReader(model.PostedImage.InputStream))
+                //    {
+                //        bytes = br.ReadBytes(model.PostedImage.ContentLength);
+                //    }
 
-                    ImageEntity image = new ImageEntity() { Name = model.PostedImage.FileName, ContentType = model.PostedImage.ContentType, Data = bytes };
-                    HairItem hair = new HairItem() { Name =model.Name, Price = model.Price, HairImage = image };
-                    context.Images.Add(image);
-                    context.HairItems.Add(hair);
-                    context.SaveChanges();
-                    return Json(true);              
+                //    ImageEntity image = new ImageEntity() { Name = model.PostedImage.FileName, ContentType = model.PostedImage.ContentType, Data = bytes };
+                //    HairItem hair = new HairItem() { Name =model.Name, Price = model.Price, HairImage = image };
+                //    context.Images.Add(image);
+                //    context.HairItems.Add(hair);
+                //    context.SaveChanges();
+                //return Json(true);              
             }      
         }
 

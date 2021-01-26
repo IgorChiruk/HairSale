@@ -14,6 +14,9 @@ namespace HairSale
     {
         protected void Application_Start()
         {
+            var configuration = GlobalConfiguration.Configuration;
+            configuration.Formatters.Remove(configuration.Formatters.XmlFormatter);
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -15,25 +15,21 @@ namespace HairSale.Models.HairItems
         Russian = 2
     }
 
-    //[DataContract]
     public class HairItem
     {
-
         public HairItem(){}
 
-        //[DataMember]
         public int Id { get; set; }
 
-        //[DataMember]
         public string Name { get; set; }
-
-        //[DataMember]
+      
         public int Price { get; set; }
 
-        //[DataMember]
         public ImageEntity HairImage { get; set; }
         public HairType HairType { get; set; }
         public ICollection<BasketItem> BasketItems { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
+        public ICollection<HairColor> HairColors { get; set; }
+        public ICollection<HairLength> HairLengths { get; set; }
     }
 }

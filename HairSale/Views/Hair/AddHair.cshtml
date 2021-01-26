@@ -1,31 +1,61 @@
-﻿@model HairSale.Models.HairItems.HairViewModel
+﻿@using HairSale.Models.HairItems;
+@model HairViewModel
 
-<div class="container-fluid mt-5" id="AddHairMenu">
-    <div>
-        <p>
-            @Html.LabelFor(x => Model.Name)
-        </p>
-        <p>
-            @Html.EditorFor(x => Model.Name)
-        </p>
-    </div>
-    <div>
-        <p>
-            @Html.LabelFor(x => Model.Price)
-        </p>
-        <p>
-            @Html.EditorFor(x => Model.Price)
-        </p>
-    </div>
-    <div>
-        <p>
-            @Html.EnumDropDownListFor(
-     x => x.HairType,
-     "Выберите тип",
-     new { @class = "form-control" })
-        </p>
-        
-    </div>
+<div class="container text-left mt-5" id="AddHairMenu">
+    <p>
+        @Html.LabelFor(x => Model.Name)
+    </p>
+    <p>
+        @Html.EditorFor(x => Model.Name)
+    </p>
+
+    <p>
+        @Html.LabelFor(x => Model.Price)
+    </p>
+    <p>
+        @Html.EditorFor(x => Model.Price)
+    </p>
+
+    <p>
+        @Html.EnumDropDownListFor(x => x.HairType, "Выберите тип", new { @class = "form-control" })
+    </p>
+
+    <h5>Размер</h5>
+    @if (Model.HairLengths.Count() <= 0)
+    {
+        <p>Нет добавленых размеров</p>
+    }
+    else
+    {
+        foreach (HairLength item in Model.HairLengths)
+        {
+@*<div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="HairLenghts.Id" value="@item.Id">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="HairLenghts.Lenght" value="@item.Length">
+    <label class="form-check-label" for="inlineCheckbox1">@item.Length</label>
+</div>*@
+            
+        }
+    }
+
+    <h5>Цвет</h5>
+    @if (Model.HairColors.Count() <= 0)
+    {
+        <p>Нет добавленых кодов цвета</p>
+    }
+    else
+    {
+        foreach (HairColor item in Model.HairColors)
+        {
+            <!--<div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="colorid" name="HairColors" value="@item.Id">-->
+                @*<input class="form-check-input" type="checkbox" name="HairColors" value="@item.Color">*@
+                <!--<label class="form-check-label">@item.Color</label>
+            </div>-->
+
+        }
+    }
+
     <p><label for="AddHairImage">Название : </label><input type="file" class="mr-5 ml-5" id="AddHairImage"></p>
     <p><button type="button" id="AddNewHairButton" class="btn btn-success">AddNew</button></p>
 </div>
