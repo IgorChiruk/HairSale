@@ -7,7 +7,7 @@
     <table class="table table-striped">
         <tbody>
             <tr>
-                <td class="text-center"> <a href=""><img src="data:image/jpg;base64,@Convert.ToBase64String(item.HairItem.HairImage.Data)" alt="@item.HairItem.Name" title="@item.HairItem.Name" class="img-thumbnail"></a></td>
+                <td class="text-center"> <a href=""><img src="@item.HairItem.HairImage" alt="@item.HairItem.Name" title="@item.HairItem.Name" class="img-thumbnail"></a></td>
                 <td class="text-left"><a href="">@item.HairItem.Name</a> </td>
                 <td class="text-right">x @item.Quality</td>
                 <td class="text-right">@(item.HairItem.Price*item.Quality)</td>

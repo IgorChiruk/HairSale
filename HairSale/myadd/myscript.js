@@ -126,47 +126,49 @@
     $("body").on("click", "#AddNewHairButton", function () {
         var imageInput = $("#AddHairImage").get(0);
         var files = imageInput.files;
+        ReadFileAsDataUrlAndSendData(files[0]);
+    });
+});
+
+function ReadFileAsDataUrlAndSendData(file) {
+    var reader = new FileReader();
+    if (file) {
+        
         var name = $("#Name").val();
         var price = $("#Price").val();
         var type = $("#HairType").val();
-        var HairLenght = [1, 1];
-
-        //var hair = {
-        //    Name: name,
-        //    Price: price,
-        //    HairType: type,
-        //    PostedImage: files[0],
-        //    HairLenghts: [HairLenght, HairLenght, HairLenght]
-        //};    
 
         var model = new Object();
         model.Name = name;
         model.Price = price;
-        model.PostedImage = files[0];
+        model.HairType = type;
         model.HairLengths = new Array();
-        model.HairLengths[0] = new Object({  Id: 1, Length: 1 });
-        model.HairLengths[1] = new Object({ Id: 2, Length: 2 });
-        var dfsd = JSON.stringify(model);
+        model.HairColors = new Array();
+        $("input:checkbox[name=HairLengths]:checked").each(function () {
+            model.HairLengths.push(new Object({ Id: $(this).attr("id"), Length: $(this).val() }));
+        });
 
-        //var formData = new FormData();
-        //formData.append('model', hair);
+        $("input:checkbox[name=HairColors]:checked").each(function () {
+            model.HairColors.push(new Object({ Id: $(this).attr("id"), Color: $(this).val() }))
+        });
 
-        //$("input:checkbox[name=HairColors]:checked").each(function () {
-        //    alert("Id: " + $(this).attr("id") + " Value: " + $(this).val());
-        //});
+        reader.readAsDataURL(file);
+    } else {
+        alert('Выберите изображение');
+    }
 
-        //var HairColors = { 'Id': 1, 'Length': 1, }
-        //formData.append('Name', name);
-        //formData.append('Price', price);
-        //formData.append('PostedImage', files[0]);
-        //formData.append('HairType', type);
-        //formData.append('HairColors',HairColors);
+    reader.onloadend = function () {      
+        model.PostedImageData = reader.result;
+        SendAfterReadFile(model);
+    }
+}
 
-        $.ajax({
+function SendAfterReadFile(model) {
+    $.ajax({
             url: "/Hair/AddHair",
             type: "Post",        
             contentType: 'application/json',          
-            data: JSON.stringify(model),
+            data: JSON.stringify(model) ,
             processData: false,
             success: function (data) {
                 if (data == true) {
@@ -178,29 +180,8 @@
                 }
             }
         });
+}
 
-        //$.ajax({
-        //    url: "/Hair/AddHair",
-        //    method: 'Post',
-        //    data: JSON.stringify({ model: hair }),
-        //    cache: false,
-        //    dataType: 'json',
-        //    processData: false,
-        //    contentType: false,
-        //    success: function (data) {
-        //        if (data == true) {
-        //            alert("Успешно добавлено");
-        //            ClearTable();
-        //            ShowHairs();
-        //        } else {
-        //            alert("Заполните все поля");
-        //        }
-        //    }
-        //});
-    });
-});
-
-// Clear tables
 function ClearTable() {
     $("#AdminPageTable > div").remove();
 }

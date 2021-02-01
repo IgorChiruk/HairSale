@@ -29,14 +29,13 @@ namespace HairSale.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasRequired(s => s.UserBasket).WithRequiredPrincipal(a => a.User).WillCascadeOnDelete(true);
-            modelBuilder.Entity<HairItem>().HasRequired(s => s.HairImage).WithRequiredPrincipal(a => a.HairItem).WillCascadeOnDelete(true);
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<UserBasket> UserBaskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<HairItem> HairItems { get; set; }
-        public DbSet<ImageEntity> Images { get; set; }
+        //public DbSet<ImageEntity> Images { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<HairLength> HairLengths { get; set; }

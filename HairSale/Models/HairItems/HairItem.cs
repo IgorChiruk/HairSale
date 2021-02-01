@@ -16,8 +16,14 @@ namespace HairSale.Models.HairItems
     }
 
     public class HairItem
-    {
-        public HairItem(){}
+    {   
+        public HairItem()
+        {
+            BasketItems = new List<BasketItem>(); ;
+            OrderItems = new List<OrderItem>(); ;
+            HairColors = new List<HairColor>(); ;
+            HairLengths = new List<HairLength>(); ;
+        }
 
         public int Id { get; set; }
 
@@ -25,7 +31,7 @@ namespace HairSale.Models.HairItems
       
         public int Price { get; set; }
 
-        public ImageEntity HairImage { get; set; }
+        public string HairImage { get; set; }
         public HairType HairType { get; set; }
         public ICollection<BasketItem> BasketItems { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }

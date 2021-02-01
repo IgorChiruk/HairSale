@@ -38,7 +38,7 @@ namespace HairSale.Models.HairItems
 
         public IEnumerable<HairItem> GetItems()
         {
-            return appContext.HairItems.Include(x=>x.HairImage).ToList();
+            return appContext.HairItems.ToList();
         }
 
         public IEnumerable<HairItem> GetItem(string id)

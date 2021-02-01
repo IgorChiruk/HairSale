@@ -441,7 +441,6 @@
     <Compile Include="Models\Basket\UserBasket.cs" />
     <Compile Include="Models\DBInitializer\ContextInitializer.cs" />
     <Compile Include="Models\HairImages\ImageEntity.cs" />
-    <Compile Include="Models\HairImages\ImageManager.cs" />
     <Compile Include="Models\HairItems\HairColor.cs" />
     <Compile Include="Models\HairItems\HairItem.cs" />
     <Compile Include="Models\HairItems\HairItemManager.cs" />

@@ -29,12 +29,10 @@
     {
         foreach (HairLength item in Model.HairLengths)
         {
-@*<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="HairLenghts.Id" value="@item.Id">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="HairLenghts.Lenght" value="@item.Length">
-    <label class="form-check-label" for="inlineCheckbox1">@item.Length</label>
-</div>*@
-            
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="@item.Id" name="HairLengths" value="@item.Length">
+                <label class="form-check-label" for="inlineCheckbox1">@item.Length</label>
+            </div>
         }
     }
 
@@ -47,15 +45,14 @@
     {
         foreach (HairColor item in Model.HairColors)
         {
-            <!--<div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="colorid" name="HairColors" value="@item.Id">-->
-                @*<input class="form-check-input" type="checkbox" name="HairColors" value="@item.Color">*@
-                <!--<label class="form-check-label">@item.Color</label>
-            </div>-->
-
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="@item.Id" name="HairColors" value="@item.Color">
+                <label class="form-check-label" for="inlineCheckbox1">@item.Color</label>
+            </div>
         }
     }
 
-    <p><label for="AddHairImage">Название : </label><input type="file" class="mr-5 ml-5" id="AddHairImage"></p>
+    <p class="m-2"><label for="AddHairImage">Название : </label><input type="file" class="mr-5 ml-5" id="AddHairImage"></p>
     <p><button type="button" id="AddNewHairButton" class="btn btn-success">AddNew</button></p>
+    <img />
 </div>

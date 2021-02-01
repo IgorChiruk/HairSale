@@ -19,7 +19,7 @@ namespace HairSale.Controllers
         {
             using (AppContext context = AppContext.Create())
             {
-                var hairs = context.HairItems.Include(x => x.HairImage).ToList();             
+                var hairs = context.HairItems.ToList();             
                 return PartialView(hairs);
             }
         }
@@ -76,23 +76,34 @@ namespace HairSale.Controllers
         {
             using (AppContext context = AppContext.Create())
             {
-                //if (!ModelState.IsValid)
-                //{              
-                return Json(false);
-                //}             
-                //    byte[] bytes;
 
-                //    using (BinaryReader br = new BinaryReader(model.PostedImage.InputStream))
-                //    {
-                //        bytes = br.ReadBytes(model.PostedImage.ContentLength);
-                //    }
+                if (!ModelState.IsValid)
+                {
+                    return Json(false);
+                }
+                //byte[] bytes;
 
-                //    ImageEntity image = new ImageEntity() { Name = model.PostedImage.FileName, ContentType = model.PostedImage.ContentType, Data = bytes };
-                //    HairItem hair = new HairItem() { Name =model.Name, Price = model.Price, HairImage = image };
-                //    context.Images.Add(image);
-                //    context.HairItems.Add(hair);
-                //    context.SaveChanges();
-                //return Json(true);              
+                //using (BinaryReader br = new BinaryReader(model.PostedImage.InputStream))
+                //{
+                //    bytes = br.ReadBytes(model.PostedImage.ContentLength);
+                //}
+
+                //ImageEntity image = new ImageEntity() { Name = model.PostedImage.FileName, ContentType = model.PostedImage.ContentType, Data = bytes };
+                HairItem hairItem = new HairItem() { Name = model.Name, Price = model.Price, HairImage = model.PostedImageData , HairType=model.HairType};
+                foreach (HairLength length in model.HairLengths)
+                {
+                    hairItem.HairLengths.Add(length);
+                }
+
+                foreach (HairColor color in model.HairColors)
+                {
+                    hairItem.HairColors.Add(color);
+                }
+
+                //context.Images.Add(image);
+                context.HairItems.Add(hairItem);
+                context.SaveChanges();
+                return Json(true);
             }      
         }
 

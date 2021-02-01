@@ -20,8 +20,7 @@ namespace HairSale.Controllers
                     context.Entry(user.UserBasket).Collection("BasketItems").Load();
                     foreach (BasketItem item in user.UserBasket.BasketItems)
                     {
-                        context.Entry(item).Reference("HairItem").Load();
-                        context.Entry(item.HairItem).Reference("HairImage").Load();
+                        context.Entry(item).Reference("HairItem").Load();                   
                     }
 
                     if (user.UserBasket.BasketItems.Count <= 0)
