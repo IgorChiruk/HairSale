@@ -444,6 +444,7 @@
     <Compile Include="Models\HairItems\HairColor.cs" />
     <Compile Include="Models\HairItems\HairItem.cs" />
     <Compile Include="Models\HairItems\HairItemManager.cs" />
+    <Compile Include="Models\HairItems\HairIttemHairLenghtsViewModel.cs" />
     <Compile Include="Models\HairItems\HairLength.cs" />
     <Compile Include="Models\HairItems\HairViewModel.cs" />
     <Compile Include="Models\Orders\Order.cs" />

@@ -19,10 +19,10 @@ namespace HairSale.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {         
+        {
             return View();
         }
-       
+
         public ActionResult Catalog()
         {
             return View();
@@ -30,11 +30,14 @@ namespace HairSale.Controllers
 
         public ActionResult CatalogGood()
         {//todo
-            HairItemManager manager = HairItemManager.Create();
-
-            var hairs = manager.GetItems();
-            
-            return View(hairs);
+            using (AppContext context = new AppContext())
+            {
+                HairIttemHairLenghtsViewModel model = new HairIttemHairLenghtsViewModel();
+                HairItemManager manager = HairItemManager.Create();
+                model.HairItems = manager.GetItems();
+                model.HairLengths = context.HairLengths.ToList();
+                return View(model);
+            }
         }
 
         public ActionResult BuyingHair()
@@ -103,12 +106,12 @@ namespace HairSale.Controllers
                 foreach (BasketItem item in basketItems)
                 {
                     OrderItem orderItem = new OrderItem() { HairItem = item.HairItem, Order = order, Quality = item.Quality };
-                    order.OrderItems.Add(orderItem);             
+                    order.OrderItems.Add(orderItem);
                 }
                 context.Orders.Add(order);
                 context.SaveChanges();
                 return View();
-            }   
+            }
         }
     }
 }

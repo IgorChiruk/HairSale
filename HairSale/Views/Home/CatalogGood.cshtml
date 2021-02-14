@@ -1,22 +1,79 @@
 ﻿@using HairSale.Models.HairItems;
-@model IEnumerable<HairItem>
-
-
+@model HairIttemHairLenghtsViewModel
 @{
     ViewBag.Title = "CatalogGood";
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 <div class="container">
-    @foreach(HairItem item in Model)
-    {
-    <div class="container border border-light">
-        <p><img alt="@item.Id" src="@item.HairImage" /></p>
-        <p>@item.Name</p>
-        <p>@item.Price</p>
-        <p><button class="btn btn-default" onclick="AddItemToBasket(@item.Id,1)"> В корзину</button></p>
+    <div class="row">
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <nav id="left-menu" class="navbar">
+                <div class="navbar-header">
+                    <button type="button" class="btn-menu visible-xs navbar-toggle h4" data-toggle="collapse" data-target=".navbar-ex2-collapse"><i class="fa fa-bars"></i> Категории</button>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex2-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Славянские волосы</a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled">
+                                        @if (Model.HairLengths.Count() > 0)
+                                        {
+                                            foreach (HairLength length in Model.HairLengths)
+                                            {                                              
+                                                <li><a onclick="LoadSlavianHairsSortedByLength('@length.Length')">@length.Length см.</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                                <a onclick="LoadAllSlavianHairs()" class="see-all">Показать все</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Южно-русские волосы</a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled">
+                                        @if (Model.HairLengths.Count() > 0)
+                                        {
+                                            foreach (HairLength length in Model.HairLengths)
+                                            {
+                                                <li><a onclick="LoadRussianHairsSortedByLength('@length.Length')">@length.Length см.</a></li>
+                                            }
+                                        }                                   
+                                    </ul>
+                                </div>
+                                <a onclick="LoadAllRussianHairs()" class="see-all">Показать все</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        <div class="container col-md-9" id="HairCatalog">
+            @if (Model.HairItems.Count() <= 0)
+            {
+                <div>
+                    <h4>Нет добавленных волос</h4>
+                </div>
+            }
+            else
+            {
+                foreach (HairItem item in Model.HairItems)
+                {
+                    <div class="container border border-light">
+                        <p><img alt="@item.Id" src="@item.HairImage" /></p>
+                        <p>@item.Name</p>
+                        <p>@item.Price</p>
+                        <p><button class="btn btn-default" onclick="AddItemToBasket(@item.Id,1)"> В корзину</button></p>
+                    </div>
+                }
+            }
+        </div>
     </div>
-    }
-
 </div>
+
+
 
 

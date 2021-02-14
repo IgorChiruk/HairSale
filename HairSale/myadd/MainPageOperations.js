@@ -1,7 +1,32 @@
 ﻿$(function ($, undefined) {
 
     UpdateBasket();
+
+    $("body").on("click", "#", function () {
+
+    });
+
 });
+
+function LoadAllSlavianHairs() {
+    ClearCatalogWindow()
+}
+
+function LoadSlavianHairsSortedByLength(length) {
+    ClearCatalogWindow()
+}
+
+function LoadAllRussianHairs() {
+    ClearCatalogWindow()
+}
+
+function LoadRussianHairsSortedByLength(length) {
+    ClearCatalogWindow()
+}
+
+function ClearCatalogWindow() {
+    $('#HairCatalog > div').remove();
+}
 
 function UpdateBasket() {
     ClearBasket();
